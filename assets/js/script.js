@@ -34,26 +34,54 @@ let banerSwiper = new Swiper('.banner__slider', {
    },
 });
 
-let records = new Swiper('.product__slider-container', {
-   slidesPerView: 'auto',
-   direction: getDirection(),
-   spaceBetween:6,
-   navigation: {
-      nextEl: '.product__slider-button-next',
-      prevEl: '.product__slider-button-prev',
-   },
-   on: {
-      resize: function () {
-        swiper.changeDirection(getDirection());
+
+let btnPrev = document.querySelectorAll('.product__slider-button-prev');
+// let btnNext = document.querySelectorAll('.product__slider-button-next');
+// let btnPrevItem;
+// let btnNextItem;
+
+// btnPrev.forEach((item) => {
+//   return btnPrev = item.closest('.product').querySelector('.product__slider-button-prev');
+// });
+
+
+// const records = new Swiper('.product__slider-container', {
+//    slidesPerView: 'auto',
+//    direction: getDirection(),
+//    spaceBetween: 6,
+//    navigation: {
+//       nextEl: '.product__slider-button-next',
+//       prevEl: '.product__slider-button-prev',
+
+//    },
+//    debugger: true,
+//    on: {
+//       resize: function () {
+//          swiper.changeDirection(getDirection());
+//       }
+//    }
+// });
+document.querySelectorAll('.product__slider-container').forEach(function (elem) {
+   new Swiper(elem, {
+      slidesPerView: 'auto',
+      direction: getDirection(),
+      spaceBetween: 6,
+      navigation: {
+         nextEl: elem.closest('.product').querySelector('.product__slider-button-next'),
+         prevEl: elem.closest('.product').querySelector('.product__slider-button-prev'),
+      },
+      debugger: true,
+      on: {
+         resize: function () {
+            swiper.changeDirection(getDirection());
+         }
       }
-    }
+   });
 });
 
 function getDirection() {
    let windowWidth = window.innerWidth;
-
-   let direction = window.innerWidth <= 760 ?  'horizontal' : 'vertical' ;
-
+   let direction = window.innerWidth <= 767 ? 'horizontal' : 'vertical';
    return direction;
 }
 ;
