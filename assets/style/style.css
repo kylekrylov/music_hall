@@ -126,20 +126,73 @@ textarea {
   position: absolute;
   right: 0;
   bottom: 0;
-  font-size: 14px;
-  color: #828282;
-  background: -webkit-gradient(linear, left top, right top, from(#ffffff00), color-stop(10%, #ffffff));
-  background: -o-linear-gradient(left, #ffffff00 0%, #ffffff 10%);
-  background: linear-gradient(to right, #ffffff00 0%, #ffffff 10%);
-  text-transform: uppercase;
+  font-size: inherit;
+  color: #bdbdbd;
+  background: -webkit-gradient(linear, left top, right top, from(#ffffff00), color-stop(15%, #ffffff));
+  background: -o-linear-gradient(left, #ffffff00 0%, #ffffff 15%);
+  background: linear-gradient(to right, #ffffff00 0%, #ffffff 15%);
   text-decoration: none;
-  padding: 0px 0px 0px 20px;
+  padding: 0px 24px 0px 40px;
   cursor: pointer;
 }
 
-.text--triger:hover,
-.text--triger:focus {
+.text--triger::before,
+.text--triger::after {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  content: "";
+  -webkit-transform: translate(-2px, -50%);
+      -ms-transform: translate(-2px, -50%);
+          transform: translate(-2px, -50%);
+}
+
+.text--triger::before:hover,
+.text--triger::after:hover {
+  background: #003e81;
+  border-right: 1px solid #003e81;
+  border-bottom: 1px solid #003e81;
+}
+
+.text--triger::before {
+  background: #bdbdbd;
+  width: 12px;
+  height: 1px;
+}
+
+.text--triger::after {
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid #bdbdbd;
+  border-bottom: 1px solid #bdbdbd;
+  -webkit-transform: translate(-2px, -50%) rotate(-45deg);
+      -ms-transform: translate(-2px, -50%) rotate(-45deg);
+          transform: translate(-2px, -50%) rotate(-45deg);
+}
+
+.text--triger:hover {
   color: #003e81;
+}
+
+.text--triger:hover::before {
+  background: #003e81;
+}
+
+.text--triger:hover::after {
+  border-right: 1px solid #003e81;
+  border-bottom: 1px solid #003e81;
+}
+
+.text .active.text--triger::after {
+  -webkit-transform: translate(-5px, -100%) rotate(-135deg);
+      -ms-transform: translate(-5px, -100%) rotate(-135deg);
+          transform: translate(-5px, -100%) rotate(-135deg);
+}
+
+.text .active.text--triger::before {
+  -webkit-transform: translate(-2px, -50%) rotate(-90deg);
+      -ms-transform: translate(-2px, -50%) rotate(-90deg);
+          transform: translate(-2px, -50%) rotate(-90deg);
 }
 
 .main {
@@ -999,7 +1052,7 @@ button.swiper-pagination-bullet {
   src: url("../fonts/icomoon.woff") format("woff"), url("fonts/icomoon.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
-  font-display: block;
+  font-display: "swap";
 }
 
 [class^="icon-"],
@@ -1054,6 +1107,10 @@ button.swiper-pagination-bullet {
 
 .banner__slider {
   height: calc(100vh - 86px);
+}
+
+.banner__link {
+  background: #1a1a1a;
 }
 
 .banner__slide-img {
@@ -1321,6 +1378,7 @@ button.swiper-pagination-bullet {
 .product__text {
   font-size: 20px;
   line-height: 130%;
+  text-align: justify;
   display: -webkit-box;
   -webkit-line-clamp: 7;
   -webkit-box-orient: vertical;
@@ -1429,8 +1487,8 @@ button.swiper-pagination-bullet {
   width: -moz-fit-content;
   width: fit-content;
   position: relative;
-  color: #003e81;
-  font-size: 14px;
+  color: #bdbdbd;
+  font-size: 16px;
   line-height: 100%;
   padding-right: 52px;
 }
@@ -1444,7 +1502,7 @@ button.swiper-pagination-bullet {
 }
 
 .product__promo-text::before {
-  background: #003e81;
+  background: #bdbdbd;
   width: 42px;
   height: 2px;
   -webkit-transform: translate(0, -50%);
@@ -1455,8 +1513,8 @@ button.swiper-pagination-bullet {
 .product__promo-text::after {
   width: 10px;
   height: 10px;
-  border-right: 2px solid #003e81;
-  border-bottom: 2px solid #003e81;
+  border-right: 2px solid #bdbdbd;
+  border-bottom: 2px solid #bdbdbd;
   -webkit-transform: translate(0, -50%) rotate(-45deg);
       -ms-transform: translate(0, -50%) rotate(-45deg);
           transform: translate(0, -50%) rotate(-45deg);
@@ -1694,7 +1752,6 @@ button.swiper-pagination-bullet {
 
 .footer__terms {
   margin-top: 40px;
-  text-transform: uppercase;
   text-align: justify;
   font-size: 12px;
   line-height: 150%;
@@ -1719,7 +1776,7 @@ button.swiper-pagination-bullet {
   }
 
   .banner__slider {
-    height: calc(100vh - 84px);
+    height: calc(100vh - 86px);
   }
 
   .banner__slide-img {
@@ -1843,11 +1900,11 @@ button.swiper-pagination-bullet {
   }
 
   .banner__slider {
-    height: calc(100vh - 146px);
+    height: calc(100vh - 156px);
   }
 
   .banner__slide-img {
-    height: calc(100vh - 146px);
+    height: calc(100vh - 156px);
   }
 
   .banner__btn-wrapper {
